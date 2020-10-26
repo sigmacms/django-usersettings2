@@ -73,9 +73,9 @@ class EmptyUserSetting(object):
 
 class UserSettings(models.Model):
     site = models.OneToOneField(
-        Site, editable=False, null=True, related_name='usersettings')
+        Site, editable=False, null=True, related_name='user_settings', on_delete=models.SET_NULL)
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, editable=False, related_name='usersettings')
+        settings.AUTH_USER_MODEL, editable=False, related_name='user_settings', on_delete=models.CASCADE)
     created = models.DateTimeField(_('Created at'), auto_now_add=True)
     modified = models.DateTimeField(_('Last Updated'), auto_now=True)
 
